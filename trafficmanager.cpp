@@ -469,7 +469,7 @@ void TrafficManager::_Step( )
 	    _qdrained[input][c] = true;
 	  }
 	}
-	
+	//need to change this:
 	if ( generated ) {
 	  highest_class = c;
 	}

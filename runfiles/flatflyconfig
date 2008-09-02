@@ -83,4 +83,4 @@ const_flits_per_packet = 1;
 
 traffic       = uniform;
 
-injection_rate = 0.15;
+injection_rate = 0.45;
