@@ -10,6 +10,8 @@ public:
   int  vc_cnt;
   bool head, tail;
   int  id;
+  //the intended destination of this credit
+  int dest_router;
 };
 
 #endif
