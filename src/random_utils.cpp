@@ -27,29 +27,35 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 #include "booksim.hpp"
 #include "random_utils.hpp"
 
 void RandomSeed( long seed )
 {
-  ran_start( seed );
-  ranf_start( seed );
+  //ran_start( seed );
+  //ranf_start( seed );
+  srand48(seed);
+  srand(seed);
 }
 
 int RandomInt( int max ) 
   // Returns a random integer in the range [0,max]
 {
-  return ( ran_next( ) % (max+1) );
+  return lrand48() %(max+1);
+  //return ( ran_next( ) % (max+1) );
+  
 }
 
 unsigned long RandomIntLong( )
 {  
-  return ran_next( );
+  return lrand48();
+  //return ran_next( );
 }
 
 float RandomFloat( float max )
   // Returns a random floating-point value in the rage [0,max]
 {
-  return ( (float)ranf_next( ) * max );
+  return drand48()*max;
+  //return ( (float)ranf_next( ) * max );
 }
+

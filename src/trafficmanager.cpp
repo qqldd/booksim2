@@ -242,6 +242,7 @@ TrafficManager::TrafficManager( const Configuration &config, Network **net )
 
 TrafficManager::~TrafficManager( )
 {
+  cout<<"LOLOL\n"<<_cur_id<<endl;
   for ( int s = 0; s < _sources; ++s ) {
     delete [] _qtime[s];
     delete [] _qdrained[s];
@@ -1101,6 +1102,7 @@ bool TrafficManager::_SingleSim( )
     cout<< "Draining the Network...................\n";
     empty_steps = 0;
     while( (_drain_measured_only ? _measured_in_flight : _total_in_flight) > 0 ) { 
+      break;
       _Step( ); 
       ++empty_steps;
       
@@ -1206,6 +1208,7 @@ bool TrafficManager::_SingleSim( )
 	_drain_time = _time;
 	empty_steps = 0;
 	while( _PacketsOutstanding( ) ) { 
+	  break;
 	  _Step( ); 
 	  ++empty_steps;
 	

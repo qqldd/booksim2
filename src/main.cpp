@@ -50,6 +50,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "network.hpp"
 #include "injection.hpp"
 #include "power_module.hpp"
+#include <time.h>
+#include <sys/time.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 //include new network here//
@@ -215,7 +217,19 @@ bool AllocatorSim( const Configuration& config )
 
   /*Start the simulation run
    */
+
+
+  double total_time; /* Amount of time we've run */
+  struct timeval start_time, end_time; /* Time before/after user code */
+  total_time = 0.0;
+  gettimeofday(&start_time, NULL);
   bool result = trafficManager->Run() ;
+
+  gettimeofday(&end_time, NULL);
+  total_time = ((double)(end_time.tv_sec) + (double)(end_time.tv_usec)/1000000.0)
+            - ((double)(start_time.tv_sec) + (double)(start_time.tv_usec)/1000000.0);
+
+  cout<<"Total run time "<<total_time<<endl;
 
   ///Power analysis
   if(config.GetInt("sim_power")==1){
